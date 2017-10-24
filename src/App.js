@@ -5,19 +5,29 @@ import {
   Switch
 } from 'react-router-dom';
 
-import {DemoDashboard, DemoDashboardHome} from './services/DemoDashboard';
+import {DemoDashboard, DemoDashboardHome, DemoDashboardAbout} from './services/DemoDashboard';
+import {PaymentFlow, PaymentFlowHome} from './services/PaymentFlow';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <DemoDashboard>
-            <Switch>
-              <Route exact path="/" component={DemoDashboardHome}/>
-
-            </Switch>
-          </DemoDashboard>
+          <Route exact path="/" render={(props) => (
+            <DemoDashboard>
+              <DemoDashboardHome {...props}/>
+            </DemoDashboard>
+          )} />
+          <Route exact path="/about" render={(props) => (
+            <DemoDashboard>
+              <DemoDashboardAbout {...props}/>
+            </DemoDashboard>
+          )} />
+          <Route exact path="/payment-flow" render={(props) => (
+            <PaymentFlow>
+              <PaymentFlowHome {...props}/>
+            </PaymentFlow>
+          )} />
         </Switch>
       </BrowserRouter>
 
@@ -26,3 +36,5 @@ class App extends Component {
 }
 
 export default App;
+
+

@@ -4,17 +4,18 @@ import {
 } from 'reactstrap';
 
 import Navbar from '../../components/Navbar';
-import PayzyLogo from '../../assets/logo-payzy.svg';
+import BiaptLogo from '../../assets/logo-biapt.svg';
 
 const menuItems = [
-  { url: '/about', title: 'About us' }
+  { url: '/payment-flow', title: 'e-commerce demo' },
+  { url: '/payment-flow', title: <div><span className="fa fa-shopping-basket" /> 2</div> }
 ];
 
 class Layout extends React.Component {
   render() {
     return (
       <div>
-        <Navbar logo={PayzyLogo} items={menuItems} />
+        <Navbar logo={BiaptLogo} items={menuItems}/>
 
         <Container style={{ marginTop: '3.5rem', paddingTop: '1rem' }}>
           {this.props.children}
