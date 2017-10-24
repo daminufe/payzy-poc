@@ -7,6 +7,7 @@ import {
 
 import {DemoDashboard, DemoDashboardHome, DemoDashboardAbout} from './services/DemoDashboard';
 import {PaymentFlow, PaymentFlowHome} from './services/PaymentFlow';
+import {BankSimulation, BankSimulationHome} from './services/BankSimulation';
 
 class App extends Component {
   render() {
@@ -27,6 +28,11 @@ class App extends Component {
             <PaymentFlow>
               <PaymentFlowHome {...props}/>
             </PaymentFlow>
+          )} />
+          <Route exact path="/bank-simulation/:bank/login" render={(props) => (
+            <BankSimulation>
+              <BankSimulationHome {...props}/>
+            </BankSimulation>
           )} />
         </Switch>
       </BrowserRouter>

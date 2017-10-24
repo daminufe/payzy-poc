@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {
   Row,
   Col,
@@ -20,27 +21,49 @@ import './Home.css';
 import LogoPayzy from '../../assets/logo-payzy.svg';
 import LogoBankCgd from '../../assets/banks/cgd.png';
 import LogoBankBpi from '../../assets/banks/bpi.png';
+import LogoBankCreditoAgricola from '../../assets/banks/credito-agricola.png';
 import LogoBankSantander from '../../assets/banks/santander.png';
 import LogoBankBic from '../../assets/banks/bic.png';
 import LogoBankNovoBanco from '../../assets/banks/novo-banco.png';
 import LogoBankBbva from '../../assets/banks/bbva.png';
 import LogoBankMillennium from '../../assets/banks/millennium.png';
 
+import initiateTransaction from './actions/initiate-transaction.action';
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modal: true
+      modal: !false,
+      amount: 2998.99,
+      customerId: 'john.doe@customer.tld'
     };
 
     this.toggleModal = this.toggleModal.bind(this);
+    this.onBankChoose = this.onBankChoose.bind(this);
   }
 
   toggleModal() {
     this.setState({
       modal: !this.state.modal
     });
+  }
+
+  onBankChoose(bank) {
+    return () => {
+      const {amount, customerId} = this.state;
+      this.setState({ bank });
+
+      this.props.initiateTransaction({
+        merchantId: this.props.app.merchantId,
+        customerId,
+        amount,
+        bank
+      }).then(data => {
+        this.props.history.push(`/bank-simulation/${bank}/login`);
+      });
+    }
   }
 
   render() {
@@ -72,6 +95,8 @@ class Home extends React.Component {
                   </ListGroupItem>
                 </ListGroup>
               </CardBody>
+
+              <h4 className="m-4"><span className="pull-right">€ {this.state.amount}</span> Total amount to pay</h4>
             </Card>
 
             <hr className="mt-3 mb-3"/>
@@ -93,8 +118,6 @@ class Home extends React.Component {
             </Card>
           </Col>
 
-
-
           <Col md="4">
             <Card>
               <CardHeader>Shipping info</CardHeader>
@@ -102,7 +125,8 @@ class Home extends React.Component {
                 <CardText>
                   John Doe <br/>
                   Some Street 22<br/>
-                  1010-010 - Lisbon
+                  1010-010 - Lisbon<br/>
+                  {this.state.customerId}
                 </CardText>
               </CardBody>
             </Card>
@@ -115,7 +139,8 @@ class Home extends React.Component {
                 <CardText>
                   John Doe <br/>
                   Some Street 22<br/>
-                  1010-010 - Lisbon
+                  1010-010 - Lisbon<br/>
+                  {this.state.customerId}
                 </CardText>
               </CardBody>
             </Card>
@@ -135,7 +160,7 @@ class Home extends React.Component {
             <div className="payzy-bank-selector">
               <Row>
                 <Col>
-                  <div className="m-4 p-1 text-center bank-container">
+                  <div className="m-4 p-1 text-center bank-container" onClick={this.onBankChoose('cgd')}>
                     <img src={LogoBankCgd} alt=""/>
                     <div className="pt-2 small">Caixa Geral de Depósitos</div>
                   </div>
@@ -181,8 +206,8 @@ class Home extends React.Component {
                 </Col>
                 <Col>
                   <div className="m-4 p-1 text-center bank-container">
-                    <img src={LogoBankSantander} alt=""/>
-                    <div className="pt-2 small">Santander Totta</div>
+                    <img src={LogoBankCreditoAgricola} alt=""/>
+                    <div className="pt-2 small">Crédito Agrícola</div>
                   </div>
                 </Col>
               </Row>
@@ -195,4 +220,9 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  app: state.app,
+  transactions: state.transactions
+});
+
+export default connect(mapStateToProps, {initiateTransaction})(Home);

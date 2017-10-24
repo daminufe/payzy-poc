@@ -1,8 +1,5 @@
-// import {
-//   APP_STARTED,
-// } from '../constants';
-
 const defaultState = {
+  merchantId: 'biapt'
 };
 
 export default (state = defaultState, payload) => {

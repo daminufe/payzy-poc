@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Container
 } from 'reactstrap';
+import {withRouter} from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
 import BiaptLogo from '../../assets/logo-biapt.svg';
@@ -25,4 +26,4 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout;
+export default withRouter(Layout);
