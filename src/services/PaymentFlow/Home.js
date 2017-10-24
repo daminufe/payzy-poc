@@ -18,6 +18,13 @@ import {
 
 import './Home.css';
 import LogoPayzy from '../../assets/logo-payzy.svg';
+import LogoBankCgd from '../../assets/banks/cgd.png';
+import LogoBankBpi from '../../assets/banks/bpi.png';
+import LogoBankSantander from '../../assets/banks/santander.png';
+import LogoBankBic from '../../assets/banks/bic.png';
+import LogoBankNovoBanco from '../../assets/banks/novo-banco.png';
+import LogoBankBbva from '../../assets/banks/bbva.png';
+import LogoBankMillennium from '../../assets/banks/millennium.png';
 
 class Home extends React.Component {
   constructor(props) {
@@ -129,25 +136,25 @@ class Home extends React.Component {
               <Row>
                 <Col>
                   <div className="m-4 p-1 text-center bank-container">
-                    <span className="fa fa-5x fa-bank" />
+                    <img src={LogoBankCgd} alt=""/>
                     <div className="pt-2 small">Caixa Geral de Depósitos</div>
                   </div>
                 </Col>
                 <Col>
                   <div className="m-4 p-1 text-center bank-container">
-                    <span className="fa fa-5x fa-bank" />
+                    <img src={LogoBankBpi} alt=""/>
                     <div className="pt-2 small">BPI</div>
                   </div>
                 </Col>
                 <Col>
                   <div className="m-4 p-1 text-center bank-container">
-                    <span className="fa fa-5x fa-bank" />
+                    <img src={LogoBankSantander} alt=""/>
                     <div className="pt-2 small">Santander</div>
                   </div>
                 </Col>
                 <Col>
                   <div className="m-4 p-1 text-center bank-container">
-                    <span className="fa fa-5x fa-bank" />
+                    <img src={LogoBankBic} alt=""/>
                     <div className="pt-2 small">BIC</div>
                   </div>
                 </Col>
@@ -156,25 +163,25 @@ class Home extends React.Component {
               <Row>
                 <Col>
                   <div className="m-4 p-1 text-center bank-container">
-                    <span className="fa fa-5x fa-bank" />
+                    <img src={LogoBankNovoBanco} alt=""/>
                     <div className="pt-2 small">Novo Banco</div>
                   </div>
                 </Col>
                 <Col>
                   <div className="m-4 p-1 text-center bank-container">
-                    <span className="fa fa-5x fa-bank" />
+                    <img src={LogoBankBbva} alt=""/>
                     <div className="pt-2 small">BBVA</div>
                   </div>
                 </Col>
                 <Col>
                   <div className="m-4 p-1 text-center bank-container">
-                    <span className="fa fa-5x fa-bank" />
+                    <img src={LogoBankMillennium} alt=""/>
                     <div className="pt-2 small">Millennium BCP</div>
                   </div>
                 </Col>
                 <Col>
                   <div className="m-4 p-1 text-center bank-container">
-                    <span className="fa fa-5x fa-bank" />
+                    <img src={LogoBankSantander} alt=""/>
                     <div className="pt-2 small">Santander Totta</div>
                   </div>
                 </Col>
