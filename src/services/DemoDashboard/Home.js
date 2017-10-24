@@ -34,7 +34,7 @@ class Home extends React.Component {
 
             <h3 className="mt-4 mb-1">Available demos</h3>
             <ListGroup>
-              <Link to="/payment-flow" className="list-group-item-action list-group-item">1) Simulation of a e-commerce payment (full-flow)</Link>
+              <Link to="/bia.pt/cart" className="list-group-item-action list-group-item">1) Simulation of a e-commerce payment (full-flow)</Link>
               <Link to="/about" className="list-group-item-action list-group-item">2) Merchant dashboard with transactions</Link>
               <Link to="/about" className="list-group-item-action list-group-item">3) Customer area (view orders)</Link>
             </ListGroup>

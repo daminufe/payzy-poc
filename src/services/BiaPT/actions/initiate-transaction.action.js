@@ -1,4 +1,4 @@
-export default ({merchantId, customerId, amount, bank}) => (dispatch) => {
+export default ({merchantId, customerId, amount, bank, orderRef}) => (dispatch) => {
   const options = {
     headers: {
       'Content-Type': 'application/json',
@@ -9,6 +9,7 @@ export default ({merchantId, customerId, amount, bank}) => (dispatch) => {
       customerId,
       amount,
       bank,
+      description: `Order reference: ${orderRef}`
     }),
   };
 

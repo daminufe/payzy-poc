@@ -35,9 +35,11 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      modal: !false,
+      orderRef: `BIA-${String(Date.now()).substr(5, 11)}`,
+      modal: false,
       amount: 2998.99,
-      customerId: 'john.doe@customer.tld'
+      customerId: 'john.doe@customer.tld',
+      isRedirecting: false
     };
 
     this.toggleModal = this.toggleModal.bind(this);
@@ -52,16 +54,19 @@ class Home extends React.Component {
 
   onBankChoose(bank) {
     return () => {
-      const {amount, customerId} = this.state;
-      this.setState({ bank });
+      const {amount, customerId, orderRef} = this.state;
+      this.setState({ bank, isRedirecting: true });
 
       this.props.initiateTransaction({
         merchantId: this.props.app.merchantId,
         customerId,
         amount,
-        bank
+        bank,
+        orderRef
       }).then(data => {
-        this.props.history.push(`/bank-simulation/${bank}/login`);
+        setTimeout(() => {
+          this.props.history.push(`/bank-simulation/${bank}/login`);
+        }, 1500);
       });
     }
   }
@@ -74,7 +79,7 @@ class Home extends React.Component {
             <Breadcrumb>
               <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
               <BreadcrumbItem><a href="/">Cart</a></BreadcrumbItem>
-              <BreadcrumbItem active>Checkout</BreadcrumbItem>
+              <BreadcrumbItem active>Checkout <span className="text-muted">{this.state.orderRef}</span></BreadcrumbItem>
             </Breadcrumb>
           </Col>
         </Row>
@@ -96,6 +101,8 @@ class Home extends React.Component {
                 </ListGroup>
               </CardBody>
 
+              <p className="ml-4">Order reference: <strong>{this.state.orderRef}</strong></p>
+
               <h4 className="m-4"><span className="pull-right">€ {this.state.amount}</span> Total amount to pay</h4>
             </Card>
 
@@ -104,6 +111,7 @@ class Home extends React.Component {
             <Card>
               <CardHeader><span className="fa fa-fw fa-credit-card-alt" /> Payment method</CardHeader>
               <CardBody>
+                <CardText>Please select the payment method</CardText>
                 <ListGroup style={{ cursor: 'pointer'}}>
                   <ListGroupItem action><span className="fa fa-fw fa-cc-paypal" /></ListGroupItem>
                   <ListGroupItem action>
@@ -157,61 +165,69 @@ class Home extends React.Component {
 
             <hr className="mt-3 mb-3"/>
 
-            <div className="payzy-bank-selector">
-              <Row>
-                <Col>
-                  <div className="m-4 p-1 text-center bank-container" onClick={this.onBankChoose('cgd')}>
-                    <img src={LogoBankCgd} alt=""/>
-                    <div className="pt-2 small">Caixa Geral de Depósitos</div>
-                  </div>
-                </Col>
-                <Col>
-                  <div className="m-4 p-1 text-center bank-container">
-                    <img src={LogoBankBpi} alt=""/>
-                    <div className="pt-2 small">BPI</div>
-                  </div>
-                </Col>
-                <Col>
-                  <div className="m-4 p-1 text-center bank-container">
-                    <img src={LogoBankSantander} alt=""/>
-                    <div className="pt-2 small">Santander</div>
-                  </div>
-                </Col>
-                <Col>
-                  <div className="m-4 p-1 text-center bank-container">
-                    <img src={LogoBankBic} alt=""/>
-                    <div className="pt-2 small">BIC</div>
-                  </div>
-                </Col>
-              </Row>
+            {!this.state.isRedirecting && (
+              <div className="payzy-bank-selector">
+                <Row>
+                  <Col>
+                    <div className="m-4 p-1 text-center bank-container" onClick={this.onBankChoose('cgd')}>
+                      <img src={LogoBankCgd} alt=""/>
+                      <div className="pt-2 small">Caixa Geral de Depósitos</div>
+                    </div>
+                  </Col>
+                  <Col>
+                    <div className="m-4 p-1 text-center bank-container" onClick={this.onBankChoose('bpi')}>
+                      <img src={LogoBankBpi} alt=""/>
+                      <div className="pt-2 small">BPI</div>
+                    </div>
+                  </Col>
+                  <Col>
+                    <div className="m-4 p-1 text-center bank-container" onClick={this.onBankChoose('santander')}>
+                      <img src={LogoBankSantander} alt=""/>
+                      <div className="pt-2 small">Santander</div>
+                    </div>
+                  </Col>
+                  <Col>
+                    <div className="m-4 p-1 text-center bank-container" onClick={this.onBankChoose('bic')}>
+                      <img src={LogoBankBic} alt=""/>
+                      <div className="pt-2 small">BIC</div>
+                    </div>
+                  </Col>
+                </Row>
 
-              <Row>
-                <Col>
-                  <div className="m-4 p-1 text-center bank-container">
-                    <img src={LogoBankNovoBanco} alt=""/>
-                    <div className="pt-2 small">Novo Banco</div>
-                  </div>
-                </Col>
-                <Col>
-                  <div className="m-4 p-1 text-center bank-container">
-                    <img src={LogoBankBbva} alt=""/>
-                    <div className="pt-2 small">BBVA</div>
-                  </div>
-                </Col>
-                <Col>
-                  <div className="m-4 p-1 text-center bank-container">
-                    <img src={LogoBankMillennium} alt=""/>
-                    <div className="pt-2 small">Millennium BCP</div>
-                  </div>
-                </Col>
-                <Col>
-                  <div className="m-4 p-1 text-center bank-container">
-                    <img src={LogoBankCreditoAgricola} alt=""/>
-                    <div className="pt-2 small">Crédito Agrícola</div>
-                  </div>
-                </Col>
-              </Row>
-            </div>
+                <Row>
+                  <Col>
+                    <div className="m-4 p-1 text-center bank-container" onClick={this.onBankChoose('novoBanco')}>
+                      <img src={LogoBankNovoBanco} alt=""/>
+                      <div className="pt-2 small">Novo Banco</div>
+                    </div>
+                  </Col>
+                  <Col>
+                    <div className="m-4 p-1 text-center bank-container" onClick={this.onBankChoose('bbva')}>
+                      <img src={LogoBankBbva} alt=""/>
+                      <div className="pt-2 small">BBVA</div>
+                    </div>
+                  </Col>
+                  <Col>
+                    <div className="m-4 p-1 text-center bank-container" onClick={this.onBankChoose('millennium')}>
+                      <img src={LogoBankMillennium} alt=""/>
+                      <div className="pt-2 small">Millennium BCP</div>
+                    </div>
+                  </Col>
+                  <Col>
+                    <div className="m-4 p-1 text-center bank-container" onClick={this.onBankChoose('creditoAgricola')}>
+                      <img src={LogoBankCreditoAgricola} alt=""/>
+                      <div className="pt-2 small">Crédito Agrícola</div>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+            )}
+            {this.state.isRedirecting && (
+              <div className="mt-5 mb-5 text-center">
+                <span className="fa fa-spin fa-spinner fa-5x" />
+                <div className="m-4">Loading...</div>
+              </div>
+            )}
           </ModalBody>
         </Modal>
 

@@ -18,15 +18,15 @@ const menuItems = [
   { url: '/sign-in', title: <div><span className="fa fa-lock" /> Secure login</div> }
 ];
 
-const banks = {
-  cgd: { logo: LogoBankCgd, color: '#0f75b5' },
-  bpi: { logo: LogoBankBpi, color: '#' },
-  creditoAgricola: { logo: LogoBankCreditoAgricola, color: '#' },
-  santander: { logo: LogoBankSantander, color: '#' },
-  bic: { logo: LogoBankBic, color: '#' },
-  novoBanco: { logo: LogoBankNovoBanco, color: '#' },
-  bbva: { logo: LogoBankBbva, color: '#' },
-  millennium: { logo: LogoBankMillennium, color: '#' }
+export const banks = {
+  cgd: { logo: LogoBankCgd, name: 'Caixa Geral de Depósitos', color: '#0f75b5' },
+  bpi: { logo: LogoBankBpi, name: 'Banco BPI', color: '#da4a13' },
+  creditoAgricola: { logo: LogoBankCreditoAgricola, name: 'Caixa de Crédito Agrícola', color: '#1a523b' },
+  santander: { logo: LogoBankSantander, name: 'Banco Santander Totta', color: '#e10f1b' },
+  bic: { logo: LogoBankBic, name: 'Banco BIC', color: '#dc1427' },
+  novoBanco: { logo: LogoBankNovoBanco, name: 'Novo Banco', color: '#b9d050' },
+  bbva: { logo: LogoBankBbva, name: 'Banco BBVA', color: '#335aa3' },
+  millennium: { logo: LogoBankMillennium, name: 'Millennium BCP', color: '#c8456f' }
 };
 
 class Layout extends React.Component {

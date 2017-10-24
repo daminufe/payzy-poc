@@ -1,15 +1,7 @@
 const defaultState = {
   isFetching: false,
   isCreated: false,
-  details: {
-    merchantId: 'biapt',
-    createdOn: new Date('2017-10-24T15:48:38.670Z'),
-    customerId: 'john.doe@customer.tld',
-    status: 'open',
-    amount: 2998.99,
-    bank: 'cgd',
-    id: '59ef60d6a9be0f6dbbe9c2db'
-  },
+  details: null,
   error: null
 };
 

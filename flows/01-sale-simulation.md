@@ -34,7 +34,6 @@ Incluir os seguintes detalhes:
     - Nome da empresa de destino
     - IBAN de destino
     - Montante a pagar
-    - Textfield com descrição do movimento
     - Botão para prosseguir
 
 * Se cancelado, enviar o PUT para a transação para definir:

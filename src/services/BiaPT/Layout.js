@@ -8,8 +8,8 @@ import Navbar from '../../components/Navbar';
 import BiaptLogo from '../../assets/logo-biapt.svg';
 
 const menuItems = [
-  { url: '/payment-flow', title: 'e-commerce demo' },
-  { url: '/payment-flow', title: <div><span className="fa fa-shopping-basket" /> 2</div> }
+  { url: '/bia.pt/cart', title: 'e-commerce demo' },
+  { url: '/bia.pt/cart', title: <div><span className="fa fa-shopping-basket" /> 2</div> }
 ];
 
 class Layout extends React.Component {
