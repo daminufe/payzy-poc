@@ -54,7 +54,7 @@ class Completed extends React.Component {
         <Row>
           <Col>
             <Breadcrumb>
-              <BreadcrumbItem><a href="/">Completed</a></BreadcrumbItem>
+              <BreadcrumbItem><a href="/"><span className="fa fa-home"/> bia.pt</a></BreadcrumbItem>
               <BreadcrumbItem><a href="/">Cart</a></BreadcrumbItem>
               <BreadcrumbItem active>Order {order.status}</BreadcrumbItem>
             </Breadcrumb>
@@ -81,7 +81,8 @@ class Completed extends React.Component {
 
               <p className="ml-4">
                 <strong>{order.description}</strong><br/>
-                Paid via PAYZY ({banks[order.bank].name})
+                Paid via PAYZY ({banks[order.bank].name})<br/>
+                Reference <code>{order.id}</code>
               </p>
 
               <h4 className="m-4"><span className="pull-right">€ {order.amount}</span> Paid successfully</h4>

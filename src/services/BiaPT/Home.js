@@ -77,7 +77,7 @@ class Home extends React.Component {
         <Row>
           <Col>
             <Breadcrumb>
-              <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
+              <BreadcrumbItem><a href="/"><span className="fa fa-home"/> bia.pt</a></BreadcrumbItem>
               <BreadcrumbItem><a href="/">Cart</a></BreadcrumbItem>
               <BreadcrumbItem active>Checkout <span className="text-muted">{this.state.orderRef}</span></BreadcrumbItem>
             </Breadcrumb>
