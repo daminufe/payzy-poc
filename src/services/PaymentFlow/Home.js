@@ -16,6 +16,7 @@ import {
   CardBody
 } from 'reactstrap';
 
+import './Home.css';
 import LogoPayzy from '../../assets/logo-payzy.svg';
 
 class Home extends React.Component {
@@ -37,7 +38,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="payment-flow-home-component">
         <Row>
           <Col>
             <Breadcrumb>
@@ -124,59 +125,61 @@ class Home extends React.Component {
 
             <hr className="mt-3 mb-3"/>
 
-            <Row>
-              <Col>
-                <div className="m-4 text-center">
-                  <span className="fa fa-5x fa-bank" />
-                  <div className="pt-2 small">Caixa Geral de Depósitos</div>
-                </div>
-              </Col>
-              <Col>
-                <div className="m-4 text-center">
-                  <span className="fa fa-5x fa-bank" />
-                  <div className="pt-2 small">BPI</div>
-                </div>
-              </Col>
-              <Col>
-                <div className="m-4 text-center">
-                  <span className="fa fa-5x fa-bank" />
-                  <div className="pt-2 small">Santander</div>
-                </div>
-              </Col>
-              <Col>
-                <div className="m-4 text-center">
-                  <span className="fa fa-5x fa-bank" />
-                  <div className="pt-2 small">BIC</div>
-                </div>
-              </Col>
-            </Row>
+            <div className="payzy-bank-selector">
+              <Row>
+                <Col>
+                  <div className="m-4 p-1 text-center bank-container">
+                    <span className="fa fa-5x fa-bank" />
+                    <div className="pt-2 small">Caixa Geral de Depósitos</div>
+                  </div>
+                </Col>
+                <Col>
+                  <div className="m-4 p-1 text-center bank-container">
+                    <span className="fa fa-5x fa-bank" />
+                    <div className="pt-2 small">BPI</div>
+                  </div>
+                </Col>
+                <Col>
+                  <div className="m-4 p-1 text-center bank-container">
+                    <span className="fa fa-5x fa-bank" />
+                    <div className="pt-2 small">Santander</div>
+                  </div>
+                </Col>
+                <Col>
+                  <div className="m-4 p-1 text-center bank-container">
+                    <span className="fa fa-5x fa-bank" />
+                    <div className="pt-2 small">BIC</div>
+                  </div>
+                </Col>
+              </Row>
 
-            <Row>
-              <Col>
-                <div className="m-4 text-center">
-                  <span className="fa fa-5x fa-bank" />
-                  <div className="pt-2 small">Novo Banco</div>
-                </div>
-              </Col>
-              <Col>
-                <div className="m-4 text-center">
-                  <span className="fa fa-5x fa-bank" />
-                  <div className="pt-2 small">BBVA</div>
-                </div>
-              </Col>
-              <Col>
-                <div className="m-4 text-center">
-                  <span className="fa fa-5x fa-bank" />
-                  <div className="pt-2 small">Millennium BCP</div>
-                </div>
-              </Col>
-              <Col>
-                <div className="m-4 text-center">
-                  <span className="fa fa-5x fa-bank" />
-                  <div className="pt-2 small">Santander Totta</div>
-                </div>
-              </Col>
-            </Row>
+              <Row>
+                <Col>
+                  <div className="m-4 p-1 text-center bank-container">
+                    <span className="fa fa-5x fa-bank" />
+                    <div className="pt-2 small">Novo Banco</div>
+                  </div>
+                </Col>
+                <Col>
+                  <div className="m-4 p-1 text-center bank-container">
+                    <span className="fa fa-5x fa-bank" />
+                    <div className="pt-2 small">BBVA</div>
+                  </div>
+                </Col>
+                <Col>
+                  <div className="m-4 p-1 text-center bank-container">
+                    <span className="fa fa-5x fa-bank" />
+                    <div className="pt-2 small">Millennium BCP</div>
+                  </div>
+                </Col>
+                <Col>
+                  <div className="m-4 p-1 text-center bank-container">
+                    <span className="fa fa-5x fa-bank" />
+                    <div className="pt-2 small">Santander Totta</div>
+                  </div>
+                </Col>
+              </Row>
+            </div>
           </ModalBody>
         </Modal>
 
