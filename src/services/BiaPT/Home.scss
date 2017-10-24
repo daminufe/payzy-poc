@@ -1,5 +1,17 @@
 .payment-flow-home-component {
+  position: relative;
 
+  .paid {
+    position: absolute;
+    z-index: 1000;
+    right: 4rem;
+    padding: 0.1rem 2rem;
+    border: 3px solid red;
+    font-size: 3rem;
+    border-radius: 1rem;
+    transform: rotate(-13deg);
+    color: red;
+  }
 }
 
 .payzy-bank-selector {

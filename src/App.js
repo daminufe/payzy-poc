@@ -6,8 +6,8 @@ import {
 } from 'react-router-dom';
 
 import {DemoDashboard, DemoDashboardHome, DemoDashboardAbout} from './services/DemoDashboard';
-import {BiaPT, BiaPTHome, BiaPTCancelTransaction} from './services/BiaPT';
-import {BankSimulation, BankSimulationHome, BankSimulationConfirmation, BankSimulationSmsToken} from './services/BankSimulation';
+import {BiaPT, BiaPTHome, BiaPTCancelTransaction, BiaPTCompleted} from './services/BiaPT';
+import {BankSimulation, BankSimulationHome, BankSimulationConfirmation, BankSimulationSmsToken, BankSimulationCompleted} from './services/BankSimulation';
 
 class App extends Component {
   render() {
@@ -36,6 +36,11 @@ class App extends Component {
               <BiaPTCancelTransaction {...props}/>
             </BiaPT>
           )} />
+          <Route exact path="/bia.pt/confirmed/:transactionId" render={(props) => (
+            <BiaPT>
+              <BiaPTCompleted {...props}/>
+            </BiaPT>
+          )} />
 
 
           <Route exact path="/bank-simulation/:bank/login" render={(props) => (
@@ -51,6 +56,11 @@ class App extends Component {
           <Route exact path="/bank-simulation/:bank/sms-token" render={(props) => (
             <BankSimulation>
               <BankSimulationSmsToken {...props}/>
+            </BankSimulation>
+          )} />
+          <Route exact path="/bank-simulation/:bank/transaction-completed/:transactionId" render={(props) => (
+            <BankSimulation>
+              <BankSimulationCompleted {...props}/>
             </BankSimulation>
           )} />
         </Switch>
